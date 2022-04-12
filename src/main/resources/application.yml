@@ -1,0 +1,12 @@
+distributed-systems:
+     mongodb:
+        replicaset:
+           replicaSetName: docker-rs
+           username: admin
+           password: admin
+           primary: mongo3
+           port: 9242
+           database: projects
+           maxPoolSize: 600
+           authenticationDb: admin
+           authMechanism: SCRAM-SHA-1
