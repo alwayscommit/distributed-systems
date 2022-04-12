@@ -1,12 +1,13 @@
-distributed-systems:
-     mongodb:
-        replicaset:
-           replicaSetName: docker-rs
-           username: admin
-           password: admin
-           primary: mongo3
-           port: 9242
-           database: projects
-           maxPoolSize: 600
-           authenticationDb: admin
-           authMechanism: SCRAM-SHA-1
+# spring.data.mongodb.uri: mongodb://root:password123==@root.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@distributed-project@
+# distributed-systems:
+#      mongodb:
+#         replicaset:
+#            replicaSetName: docker-rs
+#            username: admin
+#            password: admin
+#            primary: mongo3
+#            port: 9242
+#            database: projects
+#            maxPoolSize: 600
+#            authenticationDb: admin
+#            authMechanism: SCRAM-SHA-1
