@@ -1,5 +1,7 @@
 package com.tcd.distributedsystems.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,11 @@ public class AthleteScheduleServiceImpl implements AthleteScheduleService {
 	public AthleteSchedule saveAthleteSchedule(AthleteSchedule athleteSchedule) {
 		athleteSchedule.setIsAssigned(false);
 		return athleteScheduleRepo.save(athleteSchedule);
+	}
+
+	@Override
+	public List<AthleteSchedule> findScheduleByName(String name, String region) {
+		return athleteScheduleRepo.findByFirstNameLikeIgnoreCaseAndRegionIgnoreCase(name, region);
 	}
 
 }

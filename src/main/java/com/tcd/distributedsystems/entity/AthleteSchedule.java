@@ -21,16 +21,33 @@ public class AthleteSchedule {
 	private String firstName;
 	private String lastName;
 	private Location location;
-	private LocalDateTime schedule;
+	private LocalDateTime availabilityStartTime;
+	private LocalDateTime availabilityEndTime;
 	private Boolean isAssigned;
-	private String nationality;
+	private String region;
 
-	public String getNationality() {
-		return nationality;
+	public LocalDateTime getAvailabilityStartTime() {
+		return availabilityStartTime;
 	}
 
-	public void setNationality(String nationality) {
-		this.nationality = nationality;
+	public void setAvailabilityStartTime(LocalDateTime availabilityStartTime) {
+		this.availabilityStartTime = availabilityStartTime;
+	}
+
+	public LocalDateTime getAvailabilityEndTime() {
+		return availabilityEndTime;
+	}
+
+	public void setAvailabilityEndTime(LocalDateTime availabilityEndTime) {
+		this.availabilityEndTime = availabilityEndTime;
+	}
+
+	public String getRegion() {
+		return region;
+	}
+
+	public void setRegion(String region) {
+		this.region = region;
 	}
 
 	public ObjectId get_id() {
@@ -71,14 +88,6 @@ public class AthleteSchedule {
 
 	public void setLocation(Location location) {
 		this.location = location;
-	}
-
-	public LocalDateTime getSchedule() {
-		return schedule;
-	}
-
-	public void setSchedule(LocalDateTime schedule) {
-		this.schedule = schedule;
 	}
 
 	public Boolean getIsAssigned() {
