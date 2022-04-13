@@ -15,6 +15,7 @@ public class AthleteScheduleServiceImpl implements AthleteScheduleService {
 
 	@Override
 	public AthleteSchedule saveAthleteSchedule(AthleteSchedule athleteSchedule) {
+		athleteSchedule.setIsAssigned(false);
 		return athleteScheduleRepo.save(athleteSchedule);
 	}
 
