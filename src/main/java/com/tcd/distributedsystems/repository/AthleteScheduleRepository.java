@@ -9,8 +9,6 @@ import com.tcd.distributedsystems.entity.AthleteSchedule;
 
 public interface AthleteScheduleRepository extends MongoRepository<AthleteSchedule, ObjectId> {
 
-	List<AthleteSchedule> findByFirstNameLikeAndRegion(String name, String region);
-
-	List<AthleteSchedule> findByFirstNameLikeIgnoreCaseAndRegionIgnoreCase(String name, String region);
+	List<AthleteSchedule> findByFirstNameLikeIgnoreCaseAndRegionIgnoreCaseOrLastNameLikeIgnoreCaseAndRegionIgnoreCase(String name, String region, String name2, String region2);
 
 }
