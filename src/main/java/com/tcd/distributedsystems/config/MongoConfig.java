@@ -41,7 +41,6 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
 
 	@Override
 	public MongoClient mongoClient() {
-		System.out.println("hi");
 		return MongoClients.create("mongodb://" + username + ":" + password + "@" + primary + ":" + port + "/"
 				+ database + "?replicaSet=" + replicaSetName + "&authSource=" + authenticationDb + "&maxPoolSize="
 				+ maxPoolSize + "&authMechanism=" + authMechanism + "&ssl=false");
