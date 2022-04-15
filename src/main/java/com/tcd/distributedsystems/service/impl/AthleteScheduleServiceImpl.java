@@ -25,6 +25,12 @@ public class AthleteScheduleServiceImpl implements AthleteScheduleService {
 	public List<AthleteSchedule> findScheduleByName(String name, String region) {
 		return athleteScheduleRepo.findByFirstNameLikeIgnoreCaseAndRegionIgnoreCaseOrLastNameLikeIgnoreCaseAndRegionIgnoreCase(name, region, name, region);
 	}
+	
+	@Override
+	public AthleteSchedule assignTest(AthleteSchedule athleteSchedule) {
+		return athleteScheduleRepo.save(athleteSchedule);
+	}
+	
 
 }
 

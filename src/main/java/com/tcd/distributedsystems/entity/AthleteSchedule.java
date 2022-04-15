@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -25,6 +26,16 @@ public class AthleteSchedule {
 	private LocalDateTime availabilityEndTime;
 	private Boolean isAssigned;
 	private String region;
+	@Version
+	private Long version;
+
+	public Long getVersion() {
+		return version;
+	}
+
+	public void setVersion(Long version) {
+		this.version = version;
+	}
 
 	public LocalDateTime getAvailabilityStartTime() {
 		return availabilityStartTime;

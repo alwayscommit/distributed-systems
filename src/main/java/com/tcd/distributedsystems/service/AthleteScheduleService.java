@@ -10,4 +10,6 @@ public interface AthleteScheduleService {
 
 	public List<AthleteSchedule> findScheduleByName(String name, String region);
 
+	AthleteSchedule assignTest(AthleteSchedule athleteSchedule);
+
 }
