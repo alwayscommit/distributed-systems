@@ -1,0 +1,39 @@
+https://github.com/minhhungit/mongodb-cluster-docker-compose/tree/ff1013a8739af633cb67f9c276971ef7a9508846
+https://www.mongodb.com/docs/manual/tutorial/sharding-segmenting-data-by-location/
+
+db.createUser(    {      user: "admin",      pwd: "admin",    roles: [ "readWrite", "dbAdmin" ]    } )
+
+sh.enableSharding("wada")
+sh.shardCollection( "wada.athleteSchedule", { region : 1, _id : 1 } )
+sh.disableBalancing("wada.athleteSchedule")
+sh.isBalancerRunning()
+db.adminCommand({ listShards: 1 })
+
+
+sh.addShardTag("rs-shard-01", "NA")
+sh.addShardTag("rs-shard-02", "EU")
+sh.addShardTag("rs-shard-03", "EU")
+
+sh.addTagRange( 
+  "wada.athleteSchedule",
+  { "region" : "US", "_id" : MinKey },
+  { "region" : "US", "_id" : MaxKey }, 
+  "NA"
+)
+
+sh.addTagRange( 
+  "wada.athleteSchedule",
+  { "region" : "IE", "_id" : MinKey },
+  { "region" : "IE", "_id" : MaxKey }, 
+  "EU"
+)
+
+sh.addTagRange( 
+  "wada.athleteSchedule",
+  { "region" : "UK", "_id" : MinKey },
+  { "region" : "UK", "_id" : MaxKey }, 
+  "EU"
+)
+
+sh.enableBalancing("wada.athleteSchedule")
+

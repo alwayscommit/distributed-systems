@@ -27,8 +27,8 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
 	@Value("${distributed-systems.mongodb.replicaset.primary}")
 	private String primary;
 
-	@Value("${distributed-systems.mongodb.replicaset.replicaSetName}")
-	private String replicaSetName;
+//	@Value("${distributed-systems.mongodb.replicaset.replicaSetName}")
+//	private String replicaSetName;
 
 	@Value("${distributed-systems.mongodb.replicaset.port}")
 	private String port;
@@ -41,9 +41,12 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
 
 	@Override
 	public MongoClient mongoClient() {
-		return MongoClients.create("mongodb://" + username + ":" + password + "@" + primary + ":" + port + "/"
-				+ database + "?replicaSet=" + replicaSetName + "&authSource=" + authenticationDb + "&maxPoolSize="
-				+ maxPoolSize + "&authMechanism=" + authMechanism + "&ssl=false");
+		String dbString = "mongodb://" + username + ":" + password + "@" + primary + ":" + port + "/"
+				+ database
+				+ /* "?replicaSet=" + replicaSetName + */"?authSource=" + authenticationDb + "&maxPoolSize="
+				+ maxPoolSize + "&authMechanism=" + authMechanism + "&ssl=false";
+		System.out.println(dbString);
+		return MongoClients.create(dbString);
 	}
 
 	@Override

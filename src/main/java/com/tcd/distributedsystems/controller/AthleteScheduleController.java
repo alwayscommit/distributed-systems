@@ -38,4 +38,7 @@ public class AthleteScheduleController {
 		return ResponseEntity.status(HttpStatus.OK).body(athleteScheduleService.assignTest(athleteSchedule));
 	}
 
+	//search schedule by pin code
+	//search schedule by city
+	//assign tests to multiple athletes
 }
