@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "fc9ac762-2754-4d7c-9db3-4ffa59e79978",
+		"name": "Distributed Systems",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Athlete Schedule",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"athleteId\": \"athlete2\",\r\n        \"firstName\": \"Blue\",\r\n        \"lastName\": \"Grass\",\r\n        \"location\": {\r\n            \"streetAddress\": \"1 Gardiner Street Upper\",\r\n            \"city\": \"Dublin\",\r\n            \"state\": \"Dublin\",\r\n            \"country\": \"Ireland\",\r\n            \"zipCode\": \"D01P9Y1\"\r\n        },\r\n        \"availabilityStartTime\": \"2018-04-29T13:34:00\",\r\n        \"availabilityEndTime\": \"2018-04-29T14:34:00\",\r\n        \"region\": \"India\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/athleteSchedule",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"athleteSchedule"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Athlete",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"athleteId\":\"athlete1\",\r\n    \"firstName\":\"Yellow\",\r\n    \"lastName\":\"Mountains\",\r\n    \"permanentAddress\":{\r\n        \"streetAddress\":\"1 Gardiner Street Upper\",\r\n        \"city\":\"Dublin\",\r\n        \"state\":\"Dublin\",\r\n        \"country\":\"Ireland\",\r\n        \"zipCode\":\"D01P9Y1\"\r\n    },\r\n    \"nationality\":\"Indian\",\r\n    \"contactNumber\":\"8585858585\",\r\n    \"emailAddress\":\"okmmm@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/athlete",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"athlete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADO",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"adoName\":\"NADA\",\r\n    \"region\":\"India\",\r\n    \"adoRegistrationNumber\":\"registrationNumber\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/ado",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ado"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Athlete's Schedule",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/athleteSchedule/findScheduleByName?name=llow&region=india",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"athleteSchedule",
+						"findScheduleByName"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "llow"
+						},
+						{
+							"key": "region",
+							"value": "india"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
