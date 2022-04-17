@@ -12,4 +12,8 @@ public interface AthleteScheduleService {
 
 	AthleteSchedule assignTest(AthleteSchedule athleteSchedule);
 
+	public void notifyMissingSchedule();
+
+	public List<AthleteSchedule> findScheduleByListName(List<String> nameList, String region);
+
 }

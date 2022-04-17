@@ -33,11 +33,22 @@ public class AthleteScheduleController {
 		return athleteScheduleService.findScheduleByName(name, region);
 	}
 	
+	@GetMapping(path = "/findScheduleByListName")
+	public List<AthleteSchedule> queryAthleteSchedule(@RequestParam List<String> nameList, @RequestParam String region) {
+		return athleteScheduleService.findScheduleByListName(nameList, region);
+	}
+	
 	@PutMapping(path = "/assignTest")
 	public ResponseEntity<AthleteSchedule> assignTest(@RequestBody AthleteSchedule athleteSchedule) {
 		return ResponseEntity.status(HttpStatus.OK).body(athleteScheduleService.assignTest(athleteSchedule));
 	}
 
+	@GetMapping(path = "/notifyMissingSchedule")
+	public ResponseEntity notifyMissingSchedule() {
+		athleteScheduleService.notifyMissingSchedule();
+		return ResponseEntity.status(HttpStatus.OK).build();
+	}
+	
 	//search schedule by pin code
 	//search schedule by city
 	//assign tests to multiple athletes
