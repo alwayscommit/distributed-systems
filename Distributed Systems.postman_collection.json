@@ -114,6 +114,34 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Assign Test",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"_id\": \"6259a58a59bb723acd854373\",\r\n    \"athleteId\": \"athlete2\",\r\n    \"firstName\": \"Blue\",\r\n    \"lastName\": \"Grass\",\r\n    \"location\": {\r\n        \"streetAddress\": \"1 Gardiner Street Upper\",\r\n        \"city\": \"Dublin\",\r\n        \"state\": \"Dublin\",\r\n        \"country\": \"Ireland\",\r\n        \"zipCode\": \"D01P9Y1\"\r\n    },\r\n    \"availabilityStartTime\": \"2018-04-29T13:34:00\",\r\n    \"availabilityEndTime\": \"2018-04-29T14:34:00\",\r\n    \"isAssigned\": true,\r\n    \"region\": \"India\",\r\n    \"version\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/athleteSchedule/assignTest",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"athleteSchedule",
+						"assignTest"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
