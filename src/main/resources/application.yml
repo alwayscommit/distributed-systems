@@ -4,7 +4,7 @@ distributed-systems:
            #replicaSetName: docker-rs
            username: admin
            password: admin
-           primary: rydell-router-01
+           primary: localhost
            port: 27117
            #port: 9242
            database: wada
