@@ -17,4 +17,12 @@ public interface AthleteScheduleRepository extends MongoRepository<AthleteSchedu
 
 	List<AthleteSchedule> findByAvailabilityStartTimeBetween(LocalDateTime now, LocalDateTime plusDays);
 
+	List<AthleteSchedule> findByFirstNameLikeIgnoreCaseAndRegionIgnoreCaseAndAvailabilityStartTimeBetweenOrLastNameLikeIgnoreCaseAndRegionIgnoreCaseAndAvailabilityStartTimeBetween(
+			String name, String region, LocalDateTime now, LocalDateTime plusDays, String name2, String region2,
+			LocalDateTime now2, LocalDateTime plusDays2);
+
+	List<AthleteSchedule> findByFirstNameInIgnoreCaseAndRegionIgnoreCaseAndAvailabilityStartTimeBetweenOrLastNameInIgnoreCaseAndRegionIgnoreCaseAndAvailabilityStartTimeBetween(
+			List<String> nameList, String region, LocalDateTime now, LocalDateTime plusDays, List<String> nameList2,
+			String region2, LocalDateTime now2, LocalDateTime plusDays2);
+
 }
