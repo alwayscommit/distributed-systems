@@ -6,6 +6,8 @@ distributed-systems:
            password: admin
            primary: localhost
            port: 27117
+           secondary: localhost
+           secondaryPort: 27118
            #port: 9242
            database: wada
            maxPoolSize: 600

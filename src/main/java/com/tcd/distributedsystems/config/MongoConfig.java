@@ -26,7 +26,13 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
 
 	@Value("${distributed-systems.mongodb.replicaset.primary}")
 	private String primary;
-
+	
+	@Value("${distributed-systems.mongodb.replicaset.secondary}")
+	private String secondary;
+	
+	@Value("${distributed-systems.mongodb.replicaset.secondaryPort}")
+	private String secondaryPort;
+	
 //	@Value("${distributed-systems.mongodb.replicaset.replicaSetName}")
 //	private String replicaSetName;
 
@@ -41,7 +47,7 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
 
 	@Override
 	public MongoClient mongoClient() {
-		String dbString = "mongodb://" + username + ":" + password + "@" + primary + ":" + port + "/"
+		String dbString = "mongodb://" + username + ":" + password + "@" + primary + ":" + port + "," +secondary+":"+ secondaryPort +  "/"
 				+ database
 				+ /* "?replicaSet=" + replicaSetName + */"?authSource=" + authenticationDb + "&maxPoolSize="
 				+ maxPoolSize + "&authMechanism=" + authMechanism + "&ssl=false";
