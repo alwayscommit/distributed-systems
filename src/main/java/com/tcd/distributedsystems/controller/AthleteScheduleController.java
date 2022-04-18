@@ -1,8 +1,10 @@
 package com.tcd.distributedsystems.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,13 +34,45 @@ public class AthleteScheduleController {
 	public List<AthleteSchedule> queryAthleteSchedule(@RequestParam String name, @RequestParam String region) {
 		return athleteScheduleService.findScheduleByName(name, region);
 	}
-	
+
+	@GetMapping(path = "/findScheduleByListName")
+	public List<AthleteSchedule> queryAthleteSchedule(@RequestParam List<String> nameList,
+			@RequestParam String region) {
+		return athleteScheduleService.findScheduleByListName(nameList, region);
+	}
+
+	@PutMapping(path = "/assignMultipleTest")
+	public ResponseEntity<String> assignMultipleTest(@RequestBody List<AthleteSchedule> athleteScheduleList) {
+
+		List<String> failedAssignments = new ArrayList<String>();
+		for (AthleteSchedule schedule : athleteScheduleList) {
+			try {
+				athleteScheduleService.assignTest(schedule);
+			} catch (OptimisticLockingFailureException exception) {
+				failedAssignments.add(schedule.getFirstName() + " " + schedule.getLastName() + "");
+				continue;
+			}
+		}
+		if (!failedAssignments.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.PARTIAL_CONTENT)
+					.body("Unable to assign tests to athletes :: "
+							+ String.join(",", failedAssignments) + ". Please check if they have been already assigned a test.");
+		}
+		return ResponseEntity.status(HttpStatus.OK).body("Successfully assigned tests to all selected athletes!");
+	}
+
 	@PutMapping(path = "/assignTest")
 	public ResponseEntity<AthleteSchedule> assignTest(@RequestBody AthleteSchedule athleteSchedule) {
 		return ResponseEntity.status(HttpStatus.OK).body(athleteScheduleService.assignTest(athleteSchedule));
 	}
 
-	//search schedule by pin code
-	//search schedule by city
-	//assign tests to multiple athletes
+	@GetMapping(path = "/notifyMissingSchedule")
+	public ResponseEntity notifyMissingSchedule() {
+		athleteScheduleService.notifyMissingSchedule();
+		return ResponseEntity.status(HttpStatus.OK).build();
+	}
+
+	// search schedule by pin code
+	// search schedule by city
+	// assign tests to multiple athletes
 }

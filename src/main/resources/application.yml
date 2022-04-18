@@ -6,6 +6,8 @@ distributed-systems:
       password: admin
       primary: rydell-router-01
       port: 27017
+      secondary: rydell-router-02
+      secondaryPort: 27017
       #port: 9242
       database: wada
       maxPoolSize: 600
