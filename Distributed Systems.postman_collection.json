@@ -6,7 +6,34 @@
 	},
 	"item": [
 		{
-			"name": "Athlete Schedule",
+			"name": "Athlete Schedule - US",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"athleteId\": \"athlete1\",\r\n        \"firstName\": \"Black\",\r\n        \"lastName\": \"Waters\",\r\n        \"location\": {\r\n            \"streetAddress\": \"1 Gardiner Street Upper\",\r\n            \"city\": \"Los Angeles\",\r\n            \"state\": \"California\",\r\n            \"country\": \"United States\",\r\n            \"zipCode\": \"US02211\"\r\n        },\r\n        \"availabilityStartTime\": \"2022-04-23T13:34:00\",\r\n        \"availabilityEndTime\": \"2022-04-24T14:34:00\",\r\n        \"region\": \"US\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/athleteSchedule",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"athleteSchedule"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Athlete Schedule - UK",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -27,6 +54,119 @@
 					"port": "8080",
 					"path": [
 						"athleteSchedule"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Athlete Schedule - IE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"athleteId\": \"athlete3\",\r\n        \"firstName\": \"Purple\",\r\n        \"lastName\": \"Snow\",\r\n        \"location\": {\r\n            \"streetAddress\": \"1 Gardiner Street Upper\",\r\n            \"city\": \"Dublin\",\r\n            \"state\": \"Dublin\",\r\n            \"country\": \"Ireland\",\r\n            \"zipCode\": \"D01P9Y1\"\r\n        },\r\n        \"availabilityStartTime\": \"2018-04-29T13:34:00\",\r\n        \"availabilityEndTime\": \"2018-04-29T14:34:00\",\r\n        \"region\": \"IE\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/athleteSchedule",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"athleteSchedule"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Athlete's Schedule",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/athleteSchedule/findScheduleByName?name=Pink&region=US",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"athleteSchedule",
+						"findScheduleByName"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Pink"
+						},
+						{
+							"key": "region",
+							"value": "US"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find by list of names",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/athleteSchedule/findScheduleByListName?nameList=blue,yellow,water&region=US",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"athleteSchedule",
+						"findScheduleByListName"
+					],
+					"query": [
+						{
+							"key": "nameList",
+							"value": "blue,yellow,water"
+						},
+						{
+							"key": "region",
+							"value": "US"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Assign Test",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"_id\": \"625c8f9847a5743038da301f\",\r\n        \"athleteId\": \"athlete3\",\r\n        \"firstName\": \"Black-US\",\r\n        \"lastName\": \"Waters-US\",\r\n        \"location\": {\r\n            \"streetAddress\": \"1 Gardiner Street Upper\",\r\n            \"city\": \"WTH\",\r\n            \"state\": \"WTH\",\r\n            \"country\": \"WTH\",\r\n            \"zipCode\": \"WTH\"\r\n        },\r\n        \"availabilityStartTime\": \"2022-04-24T13:34:00\",\r\n        \"availabilityEndTime\": \"2022-04-24T14:34:00\",\r\n        \"isAssigned\": true,\r\n        \"region\": \"US\",\r\n        \"version\": 2\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/athleteSchedule/assignTest",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"athleteSchedule",
+						"assignTest"
 					]
 				}
 			},
@@ -81,63 +221,6 @@
 					"port": "8080",
 					"path": [
 						"ado"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Fetch Athlete's Schedule",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/athleteSchedule/findScheduleByName?name=llow&region=india",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"athleteSchedule",
-						"findScheduleByName"
-					],
-					"query": [
-						{
-							"key": "name",
-							"value": "llow"
-						},
-						{
-							"key": "region",
-							"value": "india"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Assign Test",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"_id\": \"6259a58a59bb723acd854373\",\r\n    \"athleteId\": \"athlete2\",\r\n    \"firstName\": \"Blue\",\r\n    \"lastName\": \"Grass\",\r\n    \"location\": {\r\n        \"streetAddress\": \"1 Gardiner Street Upper\",\r\n        \"city\": \"Dublin\",\r\n        \"state\": \"Dublin\",\r\n        \"country\": \"Ireland\",\r\n        \"zipCode\": \"D01P9Y1\"\r\n    },\r\n    \"availabilityStartTime\": \"2018-04-29T13:34:00\",\r\n    \"availabilityEndTime\": \"2018-04-29T14:34:00\",\r\n    \"isAssigned\": true,\r\n    \"region\": \"India\",\r\n    \"version\": 1\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8080/athleteSchedule/assignTest",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"athleteSchedule",
-						"assignTest"
 					]
 				}
 			},
