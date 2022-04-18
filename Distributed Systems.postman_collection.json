@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"athleteId\": \"athlete1\",\r\n        \"firstName\": \"Black\",\r\n        \"lastName\": \"Waters\",\r\n        \"location\": {\r\n            \"streetAddress\": \"1 Gardiner Street Upper\",\r\n            \"city\": \"Los Angeles\",\r\n            \"state\": \"California\",\r\n            \"country\": \"United States\",\r\n            \"zipCode\": \"US02211\"\r\n        },\r\n        \"availabilityStartTime\": \"2022-04-23T13:34:00\",\r\n        \"availabilityEndTime\": \"2022-04-24T14:34:00\",\r\n        \"region\": \"US\"\r\n    }",
+					"raw": "{\r\n        \"athleteId\": \"athlete11\",\r\n        \"firstName\": \"Green\",\r\n        \"lastName\": \"Sky\",\r\n        \"location\": {\r\n            \"streetAddress\": \"East Street\",\r\n            \"city\": \"Los Angeles\",\r\n            \"state\": \"California\",\r\n            \"country\": \"United States\",\r\n            \"zipCode\": \"US02211\"\r\n        },\r\n        \"availabilityStartTime\": \"2022-04-27T13:34:00\",\r\n        \"availabilityEndTime\": \"2022-04-27T14:34:00\",\r\n        \"region\": \"US\"\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -167,6 +167,34 @@
 					"path": [
 						"athleteSchedule",
 						"assignTest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Assign Multiple Test",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"_id\": \"625d95196c7dca60fd9e456b\",\r\n        \"athleteId\": \"athlete11\",\r\n        \"firstName\": \"Green\",\r\n        \"lastName\": \"Sky\",\r\n        \"location\": {\r\n            \"streetAddress\": \"East Street\",\r\n            \"city\": \"Los Angeles\",\r\n            \"state\": \"California\",\r\n            \"country\": \"United States\",\r\n            \"zipCode\": \"US02211\"\r\n        },\r\n        \"availabilityStartTime\": \"2022-04-25T13:34:00\",\r\n        \"availabilityEndTime\": \"2022-04-25T14:34:00\",\r\n        \"isAssigned\": false,\r\n        \"region\": \"US\",\r\n        \"version\": 0\r\n    },\r\n    {\r\n        \"_id\": \"625d9964c5913a418dafb932\",\r\n        \"athleteId\": \"athlete11\",\r\n        \"firstName\": \"Green\",\r\n        \"lastName\": \"Sky\",\r\n        \"location\": {\r\n            \"streetAddress\": \"East Street\",\r\n            \"city\": \"Los Angeles\",\r\n            \"state\": \"California\",\r\n            \"country\": \"United States\",\r\n            \"zipCode\": \"US02211\"\r\n        },\r\n        \"availabilityStartTime\": \"2022-04-21T13:34:00\",\r\n        \"availabilityEndTime\": \"2022-04-21T14:34:00\",\r\n        \"isAssigned\": true,\r\n        \"region\": \"US\",\r\n        \"version\": 1\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/athleteSchedule/assignMultipleTest",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"athleteSchedule",
+						"assignMultipleTest"
 					]
 				}
 			},
