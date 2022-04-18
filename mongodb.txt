@@ -37,3 +37,6 @@ sh.addTagRange(
 
 sh.enableBalancing("wada.athleteSchedule")
 
+db.getCollection('athleteSchedule').deleteMany({})
+
+
