@@ -1,5 +1,6 @@
 package com.tcd.distributedsystems.controller;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,10 @@ public class AthleteScheduleController {
 
 	@PostMapping
 	public ResponseEntity<AthleteSchedule> saveAthleteSchedule(@RequestBody AthleteSchedule athleteSchedule) {
+		if((athleteSchedule.getAvailabilityEndTime().getHour()-athleteSchedule.getAvailabilityStartTime().getHour())<1) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(athleteSchedule);
+		}
+		
 		return ResponseEntity.status(HttpStatus.OK).body(athleteScheduleService.saveAthleteSchedule(athleteSchedule));
 	}
 
@@ -55,8 +60,8 @@ public class AthleteScheduleController {
 		}
 		if (!failedAssignments.isEmpty()) {
 			return ResponseEntity.status(HttpStatus.PARTIAL_CONTENT)
-					.body("Unable to assign tests to athletes :: "
-							+ String.join(",", failedAssignments) + ". Please check if they have been already assigned a test.");
+					.body("Unable to assign tests to athletes :: " + String.join(",", failedAssignments)
+							+ ". Please check if they have been already assigned a test.");
 		}
 		return ResponseEntity.status(HttpStatus.OK).body("Successfully assigned tests to all selected athletes!");
 	}
