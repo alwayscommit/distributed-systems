@@ -1,6 +1,5 @@
 package com.tcd.distributedsystems.controller;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,10 +27,11 @@ public class AthleteScheduleController {
 
 	@PostMapping
 	public ResponseEntity<AthleteSchedule> saveAthleteSchedule(@RequestBody AthleteSchedule athleteSchedule) {
-		if((athleteSchedule.getAvailabilityEndTime().getHour()-athleteSchedule.getAvailabilityStartTime().getHour())<1) {
+		if ((athleteSchedule.getAvailabilityEndTime().getHour()
+				- athleteSchedule.getAvailabilityStartTime().getHour()) < 1) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(athleteSchedule);
 		}
-		
+
 		return ResponseEntity.status(HttpStatus.OK).body(athleteScheduleService.saveAthleteSchedule(athleteSchedule));
 	}
 
@@ -67,8 +67,16 @@ public class AthleteScheduleController {
 	}
 
 	@PutMapping(path = "/assignTest")
-	public ResponseEntity<AthleteSchedule> assignTest(@RequestBody AthleteSchedule athleteSchedule) {
-		return ResponseEntity.status(HttpStatus.OK).body(athleteScheduleService.assignTest(athleteSchedule));
+	public ResponseEntity<String> assignTest(@RequestBody AthleteSchedule athleteSchedule) {
+		try {
+			athleteScheduleService.assignTest(athleteSchedule);
+			return ResponseEntity.status(HttpStatus.OK).body("Assigned Test Succesfully!");
+		} catch (OptimisticLockingFailureException exception) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+					.body("Failed to assign test to athlete. Please check if the athlete"
+							+ "has already been assigned a test!");
+		}
+
 	}
 
 	@GetMapping(path = "/notifyMissingSchedule")
