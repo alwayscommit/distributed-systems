@@ -1,15 +1,15 @@
 distributed-systems:
-     mongodb:
-        replicaset:
-           #replicaSetName: docker-rs
-           username: admin
-           password: admin
-           primary: localhost
-           port: 27117
-           secondary: localhost
-           secondaryPort: 27118
-           #port: 9242
-           database: wada
-           maxPoolSize: 600
-           authenticationDb: admin
-           authMechanism: SCRAM-SHA-1
+  mongodb:
+    replicaset:
+      #replicaSetName: docker-rs
+      username: admin
+      password: admin
+      primary: rydell-router-01
+      port: 27017
+      secondary: rydell-router-02
+      secondaryPort: 27017
+      #port: 9242
+      database: wada
+      maxPoolSize: 600
+      authenticationDb: admin
+      authMechanism: SCRAM-SHA-1

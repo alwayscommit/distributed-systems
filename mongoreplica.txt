@@ -13,6 +13,14 @@ rs.status()
 use admin
 db.createUser({user: "admin",pwd: "admin",roles: [ { role: "root", db: "admin" }, "root" ]})
 
+# Mongos
+mongo --port 27117
+
+# Primary nodes for shards
+US - mongo --port 27124
+UK - mongo --port 27126
+IE - mongo --port 27129
+
 C:\Windows\System32\drivers\etc hosts
 127.0.0.1 mongo1 mongo2 mongo3
 
